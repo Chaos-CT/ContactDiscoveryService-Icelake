@@ -20,6 +20,8 @@ import static org.mockito.Mockito.when;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
+import io.micronaut.context.annotation.Requires;
+
 import java.time.Clock;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -50,6 +52,7 @@ import software.amazon.awssdk.services.kinesis.model.ShardIteratorType;
 import software.amazon.awssdk.services.kinesis.model.SubscribeToShardEvent;
 import software.amazon.awssdk.services.kinesis.model.SubscribeToShardRequest;
 
+@Requires(env = "test")
 class DynamoDbAccountPopulatorTest {
 
   private Enclave enclave;

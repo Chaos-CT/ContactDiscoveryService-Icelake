@@ -13,6 +13,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.annotations.VisibleForTesting;
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.MeterRegistry;
+import io.micronaut.context.annotation.Requires;
 import io.micronaut.scheduling.annotation.Scheduled;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
@@ -59,6 +60,7 @@ import software.amazon.awssdk.services.kinesis.model.SubscribeToShardResponseHan
  * for Java Developer Guide - Subscribing to Amazon Kinesis Data Streams</a>
  */
 @Singleton
+@Requires(env = "dev")
 class DynamoDbAccountPopulator implements AccountPopulator, SubscribeToShardResponseHandler {
 
   private final Enclave enclave;

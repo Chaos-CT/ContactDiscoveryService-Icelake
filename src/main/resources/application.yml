@@ -16,15 +16,37 @@ micronaut:
       # don't compress
       compression-threshold: 1073741824  # 1G
       compression-level: 0
+    port: 8082
 
 logger:
   levels:
     # The Cosmos client is pretty chatty
     com.azure.cosmos: WARN
 
+authentication:
+  sharedSecret: dYOGTIEBMhHz0Oq81qUOMktyFqHTo+cEPf6RKnksk50=
+
+enclave:
+  enclaveId: dev
+  availableEpcMemory: 3200000
+  loadFactor: 1.6
+  shards: 1
+  token-secret: dYOGTIEBMhHz0Oq81qUOMktyFqHTo+cEPf6RKnksk50=
+  simulated: true
+  return-acis-without-uaks: true
+
+logger:
+  levels:
+    org.signal: TRACE
+
 endpoints:
-  all:
-    port: 8081
+  port: 8082
+  sensitive: false
+
+accountTable:
+  region: eu-west-2
+  tableName: live_accounts
+  streamName: cdsi-account-updates
 
 leakyBucketLimit:
   connections:
@@ -37,3 +59,6 @@ tokenRateLimit:
   bucket-size: 50000
   leak-rate-scalar: 6
   leak-rate-duration: PT1H
+
+redis:
+  uris: redis://localhost:6379
