@@ -47,7 +47,7 @@ endpoints:
 accountTable:
   region: eu-west-2
   tableName: live_accounts
-  streamName: cdsi-account-updates
+  streamName: cdsi-account-updates-stream
 
 leakyBucketLimit:
   connections:
