@@ -3,9 +3,8 @@ micronaut:
     name: cdsi
   executors:
     enclave-jni:
-      type: fixed
-      # Note: this must never exceed `NumTCS` in `cds.conf`
-      number-of-threads: 1
+      type: scheduled
+      core-pool-size: 1
   metrics:
     enabled: true
     export:
@@ -16,7 +15,6 @@ micronaut:
       # don't compress
       compression-threshold: 1073741824  # 1G
       compression-level: 0
-    port: 8082
 
 logger:
   levels:
@@ -24,29 +22,25 @@ logger:
     com.azure.cosmos: WARN
 
 authentication:
-  sharedSecret: dYOGTIEBMhHz0Oq81qUOMktyFqHTo+cEPf6RKnksk50=
+  sharedSecret: yXSHSLPx6pTS5mkcJQ/GoyiofggKZC0+aR2dZ1F1H+k=
 
 enclave:
-  enclaveId: dev
-  availableEpcMemory: 3200000
+  enclaveId: 0f6fd79cdfdaa5b2e6337f534d3baf999318b0c462a7ac1f41297a3e4b424a57
+  availableEpcMemory: 268435456
   loadFactor: 1.6
   shards: 1
   token-secret: dYOGTIEBMhHz0Oq81qUOMktyFqHTo+cEPf6RKnksk50=
-  simulated: true
-  return-acis-without-uaks: true
+  simulated: false
+  # return-acis-without-uaks: true
 
 logger:
   levels:
     org.signal: TRACE
 
-endpoints:
-  port: 8082
-  sensitive: false
-
 accountTable:
   region: eu-west-2
   tableName: live_accounts
-  streamName: cdsi-account-updates
+  streamName: cdsi-account-updates-stream
 
 leakyBucketLimit:
   connections:
