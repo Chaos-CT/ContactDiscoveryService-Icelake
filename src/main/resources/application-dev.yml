@@ -29,7 +29,7 @@ enclave:
   availableEpcMemory: 268435456
   loadFactor: 1.6
   shards: 1
-  token-secret: dYOGTIEBMhHz0Oq81qUOMktyFqHTo+cEPf6RKnksk50=
+  token-secret: yXSHSLPx6pTS5mkcJQ/GoyiofggKZC0+aR2dZ1F1H+k=
   simulated: false
   # return-acis-without-uaks: true
 
@@ -56,3 +56,9 @@ tokenRateLimit:
 
 redis:
   uris: redis://localhost:6379
+
+cosmos:
+  database: cdsiDB
+  container: cdsiContainer
+  endpoint: https://accvm.documents.azure.com:443/
+  key: cosmos_key
